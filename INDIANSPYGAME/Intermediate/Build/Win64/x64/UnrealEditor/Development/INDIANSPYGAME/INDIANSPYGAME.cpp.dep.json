@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\unrealprojects\\indianspygame\\source\\indianspygame\\indianspygame.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unrealprojects\\indianspygame\\intermediate\\build\\win64\\x64\\indianspygameeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\unrealprojects\\indianspygame\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\indianspygame\\definitions.indianspygame.h",
+            "d:\\unrealprojects\\indianspygame\\source\\indianspygame\\indianspygame.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

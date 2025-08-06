@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "INDIANSPYGAME",
+			"Path": "..\\Source\\INDIANSPYGAME.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "INDIANSPYGAMEEditor",
+			"Path": "..\\Source\\INDIANSPYGAMEEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

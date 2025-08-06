@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\INDIANSPYGAME.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\INDIANSPYGAME.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\INDIANSPYGAMEEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Source\INDIANSPYGAME">
+      <UniqueIdentifier>{5B2F4910-E310-35B7-BA23-AF4AF1585299}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\INDIANSPYGAME\INDIANSPYGAME.Build.cs">
+      <Filter>Source\INDIANSPYGAME</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\INDIANSPYGAME.cpp">
+      <Filter>Source\INDIANSPYGAME</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\INDIANSPYGAME.h">
+      <Filter>Source\INDIANSPYGAME</Filter>
+    </ClInclude>
+    <Filter Include="Source\INDIANSPYGAME\Private">
+      <UniqueIdentifier>{1346771F-8E5F-34C1-8F9F-E587FD034C9F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\INDIANSPYGAME\Private\Animation">
+      <UniqueIdentifier>{00691ED4-7F59-397F-905D-863EA5742955}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\Animation\HeroAnimInstance.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\Animation\NPCAnimInstance.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\Animation</Filter>
+    </ClCompile>
+    <Filter Include="Source\INDIANSPYGAME\Private\CustomActors">
+      <UniqueIdentifier>{C9A5413B-CC3B-3B30-85D0-379F0AB89C31}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\CustomActors\AmmoActor.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\CustomActors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\CustomActors\RockActor.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\CustomActors</Filter>
+    </ClCompile>
+    <Filter Include="Source\INDIANSPYGAME\Private\CustomComponent">
+      <UniqueIdentifier>{E1FED77E-2C80-3DDE-BD9C-285C1F5C5ECA}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\CustomComponent\ParkourSysComponent.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\CustomComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\CustomComponent\TakeDownComponent.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\CustomComponent</Filter>
+    </ClCompile>
+    <Filter Include="Source\INDIANSPYGAME\Private\Hero">
+      <UniqueIdentifier>{3BAD1E6E-360F-3C28-AB6A-880271380087}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\Hero\HeroCharacter.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\Hero</Filter>
+    </ClCompile>
+    <Filter Include="Source\INDIANSPYGAME\Private\NPC">
+      <UniqueIdentifier>{025C23CD-5D70-31E7-BEF0-8259B38A04A1}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\NPC\AINPCCharacter.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\NPC\AINPCController.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\NPC</Filter>
+    </ClCompile>
+    <Filter Include="Source\INDIANSPYGAME\Private\Weapon">
+      <UniqueIdentifier>{002EBB1A-C7B4-38E5-8930-C870BAEA3C53}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\INDIANSPYGAME\Private\Weapon\WeaponBase.cpp">
+      <Filter>Source\INDIANSPYGAME\Private\Weapon</Filter>
+    </ClCompile>
+    <Filter Include="Source\INDIANSPYGAME\Public">
+      <UniqueIdentifier>{8C57BBF3-2277-38BE-B5A7-3B485021C787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\INDIANSPYGAME\Public\Animation">
+      <UniqueIdentifier>{57C6A4D1-2E5D-31A2-957F-6FC9D7A7369A}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\Animation\HeroAnimInstance.h">
+      <Filter>Source\INDIANSPYGAME\Public\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\Animation\NPCAnimInstance.h">
+      <Filter>Source\INDIANSPYGAME\Public\Animation</Filter>
+    </ClInclude>
+    <Filter Include="Source\INDIANSPYGAME\Public\CustomActors">
+      <UniqueIdentifier>{6A5FA9C3-A235-37D8-9C0B-31C9220EE7E2}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\CustomActors\AmmoActor.h">
+      <Filter>Source\INDIANSPYGAME\Public\CustomActors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\CustomActors\RockActor.h">
+      <Filter>Source\INDIANSPYGAME\Public\CustomActors</Filter>
+    </ClInclude>
+    <Filter Include="Source\INDIANSPYGAME\Public\CustomComponent">
+      <UniqueIdentifier>{08CB1890-352A-3348-AAC2-0E619C01885C}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\CustomComponent\ParkourSysComponent.h">
+      <Filter>Source\INDIANSPYGAME\Public\CustomComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\CustomComponent\TakeDownComponent.h">
+      <Filter>Source\INDIANSPYGAME\Public\CustomComponent</Filter>
+    </ClInclude>
+    <Filter Include="Source\INDIANSPYGAME\Public\EnumStates">
+      <UniqueIdentifier>{CD2289D8-B513-39A0-9F28-68150CEEA75D}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\EnumStates\NPCState.h">
+      <Filter>Source\INDIANSPYGAME\Public\EnumStates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\EnumStates\WeaponStates.h">
+      <Filter>Source\INDIANSPYGAME\Public\EnumStates</Filter>
+    </ClInclude>
+    <Filter Include="Source\INDIANSPYGAME\Public\Hero">
+      <UniqueIdentifier>{18AEB571-3662-33A2-BF52-48140E5C3D63}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\Hero\HeroCharacter.h">
+      <Filter>Source\INDIANSPYGAME\Public\Hero</Filter>
+    </ClInclude>
+    <Filter Include="Source\INDIANSPYGAME\Public\NPC">
+      <UniqueIdentifier>{7CE47A7F-0580-3A5E-81C9-BC5E8216ACEF}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\NPC\AINPCCharacter.h">
+      <Filter>Source\INDIANSPYGAME\Public\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\NPC\AINPCController.h">
+      <Filter>Source\INDIANSPYGAME\Public\NPC</Filter>
+    </ClInclude>
+    <Filter Include="Source\INDIANSPYGAME\Public\Weapon">
+      <UniqueIdentifier>{6DBD81C7-889E-3041-9115-5D02D05C8CDE}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\INDIANSPYGAME\Public\Weapon\WeaponBase.h">
+      <Filter>Source\INDIANSPYGAME\Public\Weapon</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

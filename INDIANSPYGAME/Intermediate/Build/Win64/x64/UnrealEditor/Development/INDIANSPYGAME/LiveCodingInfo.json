@@ -1,0 +1,20 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.INDIANSPYGAME.gen.cpp.obj": [
+			"AINPCCharacter.gen.cpp.obj",
+			"AINPCController.gen.cpp.obj",
+			"AmmoActor.gen.cpp.obj",
+			"HeroAnimInstance.gen.cpp.obj",
+			"HeroCharacter.gen.cpp.obj",
+			"INDIANSPYGAME.init.gen.cpp.obj",
+			"NPCAnimInstance.gen.cpp.obj",
+			"NPCState.gen.cpp.obj",
+			"ParkourSysComponent.gen.cpp.obj",
+			"RockActor.gen.cpp.obj",
+			"TakeDownComponent.gen.cpp.obj",
+			"WeaponBase.gen.cpp.obj",
+			"WeaponStates.gen.cpp.obj"
+		]
+	}
+}

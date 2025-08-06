@@ -1,0 +1,44 @@
+{
+	"Targets": [
+		{
+			"Name": "LiveLinkHub",
+			"Path": "E:\\Epic Games\\UE\\UE_5.6\\Engine\\Source\\Programs\\LiveLinkHub\\Source\\LiveLinkHub.Target.cs",
+			"Type": "Editor"
+		},
+		{
+			"Name": "DotNetPerforceLib",
+			"Path": "E:\\Epic Games\\UE\\UE_5.6\\Engine\\Source\\Programs\\Shared\\EpicGames.Perforce.Native\\DotNetPerforceLib.Target.cs",
+			"Type": "Program"
+		},
+		{
+			"Name": "IoStoreOnDemandTests",
+			"Path": "E:\\Epic Games\\UE\\UE_5.6\\Engine\\Source\\Runtime\\Experimental\\IoStore\\Tests\\IoStoreOnDemandTests.Target.cs",
+			"Type": "Program"
+		},
+		{
+			"Name": "EventLoopUnitTests",
+			"Path": "E:\\Epic Games\\UE\\UE_5.6\\Engine\\Source\\Runtime\\Online\\Experimental\\EventLoopTests\\EventLoopUnitTests.Target.cs",
+			"Type": "Program"
+		},
+		{
+			"Name": "UnrealEditor",
+			"Path": "E:\\Epic Games\\UE\\UE_5.6\\Engine\\Source\\UnrealEditor.Target.cs",
+			"Type": "Editor"
+		},
+		{
+			"Name": "UnrealGame",
+			"Path": "E:\\Epic Games\\UE\\UE_5.6\\Engine\\Source\\UnrealGame.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "INDIANSPYGAME",
+			"Path": "..\\Source\\INDIANSPYGAME.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "INDIANSPYGAMEEditor",
+			"Path": "..\\Source\\INDIANSPYGAMEEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

@@ -1,0 +1,28 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\unrealprojects\\indianspygame\\source\\indianspygame\\private\\animation\\npcaniminstance.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unrealprojects\\indianspygame\\intermediate\\build\\win64\\x64\\indianspygameeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\unrealprojects\\indianspygame\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\indianspygame\\definitions.indianspygame.h",
+            "d:\\unrealprojects\\indianspygame\\source\\indianspygame\\public\\animation\\npcaniminstance.h",
+            "d:\\unrealprojects\\indianspygame\\intermediate\\build\\win64\\unrealeditor\\inc\\indianspygame\\uht\\npcaniminstance.generated.h",
+            "d:\\unrealprojects\\indianspygame\\source\\indianspygame\\public\\npc\\ainpccharacter.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\source\\runtime\\net\\core\\public\\net\\core\\nettoken\\nettokenexportcontext.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\source\\runtime\\experimental\\iris\\core\\public\\iris\\serialization\\irisobjectreferencepackagemap.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\iriscore\\uht\\irisobjectreferencepackagemap.generated.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\charactermovementreplication.generated.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
+            "e:\\epic games\\ue\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
+            "d:\\unrealprojects\\indianspygame\\source\\indianspygame\\public\\enumstates\\npcstate.h",
+            "d:\\unrealprojects\\indianspygame\\intermediate\\build\\win64\\unrealeditor\\inc\\indianspygame\\uht\\npcstate.generated.h",
+            "d:\\unrealprojects\\indianspygame\\intermediate\\build\\win64\\unrealeditor\\inc\\indianspygame\\uht\\ainpccharacter.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\UnrealProjects\\INDIANSPYGAME\\Source\\INDIANSPYGAME\\INDIANSPYGAME.Build.cs",
+		"D:\\UnrealProjects\\INDIANSPYGAME\\Source\\INDIANSPYGAME.Target.cs",
+		"D:\\UnrealProjects\\INDIANSPYGAME\\Source\\INDIANSPYGAMEEditor.Target.cs"
+	],
+	"EngineVersion": "5.6.0"
+}
