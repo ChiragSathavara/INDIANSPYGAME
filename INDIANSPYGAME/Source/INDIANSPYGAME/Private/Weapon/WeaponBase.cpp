@@ -118,8 +118,6 @@ void AWeaponBase::FireBullets()
 					NPCCont->LookAtPlayer();
 					NPCCont->MyNPC->NPCState = ENPCState::ENS_Chasing;
 					NPCCont->bCanSeePlayer = true;
-					NPCCont->MyNPC->ShootingSphereArea->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-					NPCCont->MyNPC->ShootingSphereArea->SetActive(true);
 				}
 				
 			}

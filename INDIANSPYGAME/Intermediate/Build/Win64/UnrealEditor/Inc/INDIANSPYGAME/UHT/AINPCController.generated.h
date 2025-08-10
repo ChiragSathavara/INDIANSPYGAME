@@ -26,6 +26,7 @@ struct FAIStimulus;
 	DECLARE_FUNCTION(execInvenstigateArea); \
 	DECLARE_FUNCTION(execIdlePatrol); \
 	DECLARE_FUNCTION(execLookAtPlayer); \
+	DECLARE_FUNCTION(execResetShootOut); \
 	DECLARE_FUNCTION(execShootOut); \
 	DECLARE_FUNCTION(execChasePlayer); \
 	DECLARE_FUNCTION(execOnTargetDetected);

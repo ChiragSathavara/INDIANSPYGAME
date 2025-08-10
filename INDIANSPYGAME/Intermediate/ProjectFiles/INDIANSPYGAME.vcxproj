@@ -253,6 +253,8 @@
     <None Include="..\..\Source\INDIANSPYGAME.Target.cs"/>
     <None Include="..\..\Source\INDIANSPYGAMEEditor.Target.cs"/>
     <None Include="..\..\.vsconfig"/>
+    <None Include="..\..\Config\DefaultEngine.ini"/>
+    <None Include="..\..\Config\DefaultInput.ini"/>
     <None Include="..\..\Source\INDIANSPYGAME\INDIANSPYGAME.Build.cs"/>
     <ClCompile Include="..\..\Source\INDIANSPYGAME\INDIANSPYGAME.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

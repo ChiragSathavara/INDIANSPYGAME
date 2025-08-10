@@ -255,6 +255,35 @@ DEFINE_FUNCTION(AAINPCController::execOnTargetDetected)
 }
 // ********** End Class AAINPCController Function OnTargetDetected *********************************
 
+// ********** Begin Class AAINPCController Function ResetShootOut **********************************
+struct Z_Construct_UFunction_AAINPCController_ResetShootOut_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/NPC/AINPCController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AAINPCController_ResetShootOut_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AAINPCController, nullptr, "ResetShootOut", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AAINPCController_ResetShootOut_Statics::Function_MetaDataParams), Z_Construct_UFunction_AAINPCController_ResetShootOut_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_AAINPCController_ResetShootOut()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AAINPCController_ResetShootOut_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AAINPCController::execResetShootOut)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ResetShootOut();
+	P_NATIVE_END;
+}
+// ********** End Class AAINPCController Function ResetShootOut ************************************
+
 // ********** Begin Class AAINPCController Function ShootOut ***************************************
 struct Z_Construct_UFunction_AAINPCController_ShootOut_Statics
 {
@@ -296,6 +325,7 @@ void AAINPCController::StaticRegisterNativesAAINPCController()
 		{ "InvenstigateArea", &AAINPCController::execInvenstigateArea },
 		{ "LookAtPlayer", &AAINPCController::execLookAtPlayer },
 		{ "OnTargetDetected", &AAINPCController::execOnTargetDetected },
+		{ "ResetShootOut", &AAINPCController::execResetShootOut },
 		{ "ShootOut", &AAINPCController::execShootOut },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -371,11 +401,22 @@ struct Z_Construct_UClass_AAINPCController_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ShootTH_MetaData[] = {
 		{ "ModuleRelativePath", "Public/NPC/AINPCController.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FireRateTimer_MetaData[] = {
+		{ "ModuleRelativePath", "Public/NPC/AINPCController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bCanShoot_MetaData[] = {
+		{ "Category", "AINPCController" },
+		{ "ModuleRelativePath", "Public/NPC/AINPCController.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SoundLocation_MetaData[] = {
 		{ "Category", "AI" },
 		{ "ModuleRelativePath", "Public/NPC/AINPCController.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bCanSeePlayer_MetaData[] = {
+		{ "Category", "AINPCController" },
+		{ "ModuleRelativePath", "Public/NPC/AINPCController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FireRate_MetaData[] = {
 		{ "Category", "AINPCController" },
 		{ "ModuleRelativePath", "Public/NPC/AINPCController.h" },
 	};
@@ -391,9 +432,13 @@ struct Z_Construct_UClass_AAINPCController_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MyHero;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_UnEquipTH;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ShootTH;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_FireRateTimer;
+	static void NewProp_bCanShoot_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bCanShoot;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_SoundLocation;
 	static void NewProp_bCanSeePlayer_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bCanSeePlayer;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_FireRate;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_NavSys;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -405,6 +450,7 @@ struct Z_Construct_UClass_AAINPCController_Statics
 		{ &Z_Construct_UFunction_AAINPCController_InvenstigateArea, "InvenstigateArea" }, // 3887743496
 		{ &Z_Construct_UFunction_AAINPCController_LookAtPlayer, "LookAtPlayer" }, // 940159133
 		{ &Z_Construct_UFunction_AAINPCController_OnTargetDetected, "OnTargetDetected" }, // 3495063107
+		{ &Z_Construct_UFunction_AAINPCController_ResetShootOut, "ResetShootOut" }, // 1203647609
 		{ &Z_Construct_UFunction_AAINPCController_ShootOut, "ShootOut" }, // 2473571087
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -421,12 +467,19 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAINPCControll
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_MyHero = { "MyHero", nullptr, (EPropertyFlags)0x0114000000000004, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AAINPCController, MyHero), Z_Construct_UClass_AHeroCharacter_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MyHero_MetaData), NewProp_MyHero_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_UnEquipTH = { "UnEquipTH", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AAINPCController, UnEquipTH), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UnEquipTH_MetaData), NewProp_UnEquipTH_MetaData) }; // 3834150579
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_ShootTH = { "ShootTH", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AAINPCController, ShootTH), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShootTH_MetaData), NewProp_ShootTH_MetaData) }; // 3834150579
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_FireRateTimer = { "FireRateTimer", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AAINPCController, FireRateTimer), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FireRateTimer_MetaData), NewProp_FireRateTimer_MetaData) }; // 3834150579
+void Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanShoot_SetBit(void* Obj)
+{
+	((AAINPCController*)Obj)->bCanShoot = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanShoot = { "bCanShoot", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AAINPCController), &Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanShoot_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bCanShoot_MetaData), NewProp_bCanShoot_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_SoundLocation = { "SoundLocation", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AAINPCController, SoundLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SoundLocation_MetaData), NewProp_SoundLocation_MetaData) };
 void Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanSeePlayer_SetBit(void* Obj)
 {
 	((AAINPCController*)Obj)->bCanSeePlayer = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanSeePlayer = { "bCanSeePlayer", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AAINPCController), &Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanSeePlayer_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bCanSeePlayer_MetaData), NewProp_bCanSeePlayer_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_FireRate = { "FireRate", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AAINPCController, FireRate), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FireRate_MetaData), NewProp_FireRate_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAINPCController_Statics::NewProp_NavSys = { "NavSys", nullptr, (EPropertyFlags)0x0114000000000000, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AAINPCController, NavSys), Z_Construct_UClass_UNavigationSystemV1_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NavSys_MetaData), NewProp_NavSys_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AAINPCController_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_MyNPC,
@@ -437,8 +490,11 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AAINPCCon
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_MyHero,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_UnEquipTH,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_ShootTH,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_FireRateTimer,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanShoot,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_SoundLocation,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_bCanSeePlayer,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_FireRate,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAINPCController_Statics::NewProp_NavSys,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AAINPCController_Statics::PropPointers) < 2048);
@@ -478,10 +534,10 @@ AAINPCController::~AAINPCController() {}
 struct Z_CompiledInDeferFile_FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCController_h__Script_INDIANSPYGAME_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AAINPCController, AAINPCController::StaticClass, TEXT("AAINPCController"), &Z_Registration_Info_UClass_AAINPCController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AAINPCController), 614567444U) },
+		{ Z_Construct_UClass_AAINPCController, AAINPCController::StaticClass, TEXT("AAINPCController"), &Z_Registration_Info_UClass_AAINPCController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AAINPCController), 2003557790U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCController_h__Script_INDIANSPYGAME_2899130998(TEXT("/Script/INDIANSPYGAME"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCController_h__Script_INDIANSPYGAME_3610081987(TEXT("/Script/INDIANSPYGAME"),
 	Z_CompiledInDeferFile_FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCController_h__Script_INDIANSPYGAME_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCController_h__Script_INDIANSPYGAME_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

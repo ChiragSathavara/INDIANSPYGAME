@@ -46,6 +46,12 @@ public:
 
 	UPROPERTY()
 	FTimerHandle ShootTH;
+
+	UPROPERTY()
+	FTimerHandle FireRateTimer;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool bCanShoot = true;
 	
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	FVector SoundLocation;
@@ -53,10 +59,13 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	bool bCanSeePlayer;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float FireRate = 0.5;
+	
 	UPROPERTY()
    TObjectPtr<UNavigationSystemV1> NavSys;
 
-	
+   
 protected:
 
 	AAINPCController(const FObjectInitializer& ObjectInitializer);
@@ -73,7 +82,6 @@ protected:
 	void DelayUnEquipped();
 
 	
-	
 public:
 
 	UFUNCTION(BlueprintCallable)
@@ -82,6 +90,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ShootOut();
 
+	UFUNCTION(BlueprintCallable)
+	void ResetShootOut();
+	
 	UFUNCTION(BlueprintCallable)
 	void LookAtPlayer();
 
@@ -94,7 +105,7 @@ public:
 	UFUNCTION()
 	void FireWeapon();
 
-	void DelayShooting();
+	
 	
 	UFUNCTION(BlueprintCallable)
 	void DeadUnPossess();

@@ -16,19 +16,10 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-class AActor;
-class UPrimitiveComponent;
-struct FHitResult;
-
 // ********** Begin Class AAINPCCharacter **********************************************************
-#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnSphereEndOverlap); \
-	DECLARE_FUNCTION(execOnSphereBeginOverlap);
-
-
 INDIANSPYGAME_API UClass* Z_Construct_UClass_AAINPCCharacter_NoRegister();
 
-#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAAINPCCharacter(); \
 	friend struct Z_Construct_UClass_AAINPCCharacter_Statics; \
@@ -39,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(AAINPCCharacter)
 
 
-#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_16_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	AAINPCCharacter(AAINPCCharacter&&) = delete; \
 	AAINPCCharacter(const AAINPCCharacter&) = delete; \
@@ -49,13 +40,12 @@ public: \
 	NO_API virtual ~AAINPCCharacter();
 
 
-#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_14_PROLOG
-#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_17_GENERATED_BODY \
+#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_13_PROLOG
+#define FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_17_INCLASS_NO_PURE_DECLS \
-	FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_17_ENHANCED_CONSTRUCTORS \
+	FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_16_INCLASS_NO_PURE_DECLS \
+	FID_INDIANSPYGAME_Source_INDIANSPYGAME_Public_NPC_AINPCCharacter_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

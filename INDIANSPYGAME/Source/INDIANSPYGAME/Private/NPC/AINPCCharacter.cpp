@@ -17,12 +17,6 @@ AAINPCCharacter::AAINPCCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
-	ShootingSphereArea = CreateDefaultSubobject<USphereComponent>(FName("ShootingArea"));
-	ShootingSphereArea->SetupAttachment(RootComponent);
-
-	ShootingSphereArea->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	ShootingSphereArea->SetActive(false);
-	
 	bWeaponInHand = false;
 	NPCState = ENPCState::ENS_Idle;
 
@@ -31,9 +25,7 @@ AAINPCCharacter::AAINPCCharacter()
 
 	bISNPCAlive = true;
 	bReloading = false;
-
-	ShootingSphereArea->OnComponentBeginOverlap.AddDynamic(this,&AAINPCCharacter::OnSphereBeginOverlap);
-	ShootingSphereArea->OnComponentEndOverlap.AddDynamic(this,&AAINPCCharacter::OnSphereEndOverlap);
+	bShootinArea = false;
 }
 
 // Called when the game starts or when spawned
@@ -79,8 +71,6 @@ void AAINPCCharacter::EquipRifle()
 		{
 			AttachRifle("WeaponHandHolder");
 			bWeaponInHand = true;
-			ShootingSphereArea->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-			ShootingSphereArea->SetActive(true);
 		}
 		else
 		{
@@ -96,8 +86,6 @@ void AAINPCCharacter::UnEquipRifle()
 		{
 			AttachRifle("RifleSocket");
 			bWeaponInHand = false;
-			ShootingSphereArea->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-			ShootingSphereArea->SetActive(false);
 		}
 		else
 		{
@@ -153,30 +141,7 @@ void AAINPCCharacter::Die()
 	GetMesh()->SetSimulatePhysics(true);
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	GetCapsuleComponent()->SetActive(false);
-    ShootingSphereArea->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	ShootingSphereArea->SetActive(false);
 
-}
-
-void AAINPCCharacter::OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	OverlappedHero = Cast<AHeroCharacter>(OtherActor);
-	if (OverlappedHero)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("OnSphereEndOverlap NPC :- Hero is in shooting range"));
-		bInShootingRange = true;
-		
-	}
-}
-
-void AAINPCCharacter::OnSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
-{
-	bInShootingRange = false;
-	OverlappedHero = nullptr;
-	UE_LOG(LogTemp, Warning, TEXT("OnSphereEndOverlap NPC :- Hero is out of shooting range"));
-	
 }
 
 float AAINPCCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser)

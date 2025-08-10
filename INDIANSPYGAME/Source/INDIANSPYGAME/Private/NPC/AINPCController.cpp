@@ -9,7 +9,6 @@
 #include "Perception/AISenseConfig_Sight.h"
 #include "Kismet/GameplayStatics.h"
 #include "Perception/AISenseConfig_Hearing.h"
-#include "Components/SphereComponent.h"
 #include "NavigationSystem.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 
@@ -101,6 +100,8 @@ void AAINPCController::OnTargetDetected(AActor* TargetActor, const FAIStimulus S
 		{
 			if (Stimulus.WasSuccessfullySensed())
 			{
+				MyNPC->bShootinArea = true;
+
 				if (bCanSeePlayer == false && MyNPC->bWeaponInHand == false)
 				{
 					if (MyNPC->NPCState == ENPCState::ENS_Idle || MyNPC->NPCState == ENPCState::ENS_Investigate)
@@ -114,7 +115,6 @@ void AAINPCController::OnTargetDetected(AActor* TargetActor, const FAIStimulus S
 							MyHero->StealthBoxComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 							MyHero->StealthBoxComponent->SetActive(false);
 						}
-						GetWorld()->GetTimerManager().SetTimer( ShootTH,this,&AAINPCController::DelayShooting,0.5,false);
 						UE_LOG(LogTemp, Warning, TEXT("SAW Player"));
 					}
 				}
@@ -126,8 +126,8 @@ void AAINPCController::OnTargetDetected(AActor* TargetActor, const FAIStimulus S
 					MyHero->StealthBoxComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 					MyHero->StealthBoxComponent->SetActive(true);
 				}
-				
 				GetWorld()->GetTimerManager().SetTimer( UnEquipTH,this,&AAINPCController::DelayUnEquipped,25,false);
+				MyNPC->bShootinArea = false;
 			}
 		}
 		
@@ -154,9 +154,8 @@ void AAINPCController::DelayUnEquipped()
 {
 	if (MyNPC != nullptr)
 	{
+		
 		MyNPC->NPCState = ENPCState::ENS_Idle;
-		MyNPC->ShootingSphereArea->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-		MyNPC->ShootingSphereArea->SetActive(true);
 		bCanSeePlayer = false;
 		MyNPC->UnEquipRifle();
 		StopMovement();
@@ -175,22 +174,38 @@ void AAINPCController::IdlePatrol()
 			return;
 		}
 
-		MyNPC->NPCState = ENPCState::ENS_Idle;
-		bCanSeePlayer = false;
-		
-		FNavLocation Loc;
-
-		FVector Origin = MyNPC->GetActorLocation();
-		
-		float Range = 5000.f;
-		
-		if (NavSys->GetRandomReachablePointInRadius(Origin, Range,Loc))
+		if (MyHero != nullptr)
 		{
-			UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, Loc.Location);
+			if (MyHero->bIsPlayerAlive)
+			{
+				MyNPC->NPCState = ENPCState::ENS_Idle;
+				bCanSeePlayer = false;
+		
+				FNavLocation Loc;
+
+				FVector Origin = MyNPC->GetActorLocation();
+		
+				float Range = 5000.f;
+		
+				if (NavSys->GetRandomReachablePointInRadius(Origin, Range,Loc))
+				{
+					UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, Loc.Location);
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("MYNavSys Random Point Not Found"));
+				}
+			}
+			else
+			{
+				MyNPC->NPCState = ENPCState::ENS_Idle;
+				bCanSeePlayer = false;
+				
+			}
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("MYNavSys Random Point Not Found"));
+			UE_LOG(LogTemp, Warning, TEXT("MyHero Is nullptr IdlePatrol"));
 		}
 		
 	}
@@ -220,32 +235,42 @@ void AAINPCController::ChasePlayer()
 
 void AAINPCController::ShootOut()
 {
-	if (MyNPC != nullptr && MyNPC->bISNPCAlive == false)
-	{
-		return;
-	}
-	if (MyHero != nullptr && MyHero->bIsPlayerAlive == false)
+	if (!MyNPC || !MyHero || !MyNPC->bISNPCAlive || !MyHero->bIsPlayerAlive)
 	{
 		IdlePatrol();
 		return;
 	}
-	
-	if (MyNPC && bCanSeePlayer == true && MyNPC->bInShootingRange == true)
+
+	if (bCanSeePlayer == true)
 	{
 		if (MyNPC->bReloading)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Still reloading"));
 			return;
 		}
-		
-		FireWeapon();
-		UE_LOG(LogTemp, Warning, TEXT("Shoot out is working"));
+		if (bCanShoot)
+		{
+			bCanShoot = false;
+			FireWeapon();
+			GetWorld()->GetTimerManager().SetTimer(FireRateTimer, this, &AAINPCController::ResetShootOut, FireRate, false);
+			UE_LOG(LogTemp, Warning, TEXT("NPC fired a shot"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Waiting for cooldown..."));
+		}
 	}
 	else
 	{
 		MyNPC->NPCState = ENPCState::ENS_Chasing;
 		UE_LOG(LogTemp, Warning, TEXT("Shoot out is not working"));
 	}
+}
+
+void AAINPCController::ResetShootOut()
+{
+	bCanShoot = true;
+	UE_LOG(LogTemp, Warning, TEXT("Cooldown over. Can shoot again."));
 }
 
 void AAINPCController::LookAtPlayer()
@@ -300,15 +325,6 @@ void AAINPCController::FireWeapon()
 			return;
 		}
 		MyNPC->FireRifle();
-	}
-}
-
-void AAINPCController::DelayShooting()
-{
-	if (MyHero != nullptr)
-	{
-		MyNPC->ShootingSphereArea->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-		MyNPC->ShootingSphereArea->SetActive(true);
 	}
 }
 
